@@ -1,7 +1,9 @@
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from django.template import loader
 
 # Create your views here.
+from restaurant.forms import RestaurantForm
 from restaurant.models import Restaurant
 
 
@@ -10,3 +12,15 @@ def index(request):
     restaurants = Restaurant.objects.all()
     context = {"restaurants": restaurants}
     return HttpResponse(template.render(context, request))
+
+def create(request):
+    if request.method == 'POST':
+        form = RestaurantForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        template = loader.get_template("restaurants/add.html")
+        form = RestaurantForm()
+        context = {"form": form}
+        return HttpResponse(template.render(context, request))
