@@ -1,0 +1,19 @@
+{% extends "restaurants/layout.html" %}
+
+{% block title %}
+    Modifier un Restaurant
+{% endblock %}
+
+{% block page_title %}
+    Modifier un Restaurant
+{% endblock %}
+
+
+{% block content %}
+    <form class="form-horizontal" method="POST" action="{% url 'update' pk=restaurant.id %}">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit"> Valider</button>
+    </form>
+<a href="/">Accueil</a>
+{% endblock %}

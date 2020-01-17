@@ -36,3 +36,17 @@ def detail(request, pk):
 
     context = {"restaurant": restaurant}
     return HttpResponse(template.render(context, request))
+
+
+def update(request, pk):
+    restaurant = Restaurant.objects.get(id=pk)
+    if request.method == 'POST':
+        form = RestaurantForm(request.POST, instance=restaurant)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        template = loader.get_template("restaurants/update.html")
+        form = RestaurantForm(instance=restaurant)
+        context = {"form": form, "restaurant": restaurant}
+        return HttpResponse(template.render(context, request))
