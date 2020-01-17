@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<h1 class="text-center">Liste des restaurants </h1>
+<h4><a href="">Ajouter un restaurants</a></h4>
+<table class="table table-dark text-center">
+    <thead>
+    <tr>
+        <td>Nom</td>
+        <td>Detail</td>
+        <td>Modifier</td>
+        <td>Supprimer</td>
+    </tr>
+    </thead>
+    <tbody>
+        {% for restaurant in restaurants %}
+        <tr>
+            <td>
+                <h2>{{restaurant.name}}</h2></a>
+            </td>
+            <td>
+                <a href=""><h5>Détail</h5></a><br>
+            </td>
+            <td>
+                <a href=""><h5>Modifier</h5></a><br>
+            </td>
+            <td>
+                <a href=""><h5>Supprimer</h5></a><br>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
