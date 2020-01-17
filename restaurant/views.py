@@ -1,5 +1,5 @@
 from django.http import HttpResponse, Http404
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.template import loader
 
 # Create your views here.
@@ -50,3 +50,9 @@ def update(request, pk):
         form = RestaurantForm(instance=restaurant)
         context = {"form": form, "restaurant": restaurant}
         return HttpResponse(template.render(context, request))
+
+
+def delete(request, pk):
+    restaurant_to_delete = get_object_or_404(Restaurant, id=pk)
+    restaurant_to_delete.delete()
+    return redirect('index')
