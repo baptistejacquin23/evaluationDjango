@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ajout</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
+{% extends "restaurants/layout.html" %}
 
-<H1>Ajouter un Restaurant</H1>
+{% block title %}
+    Ajout Restaurant
+{% endblock %}
 
-<form class="form-horizontal" method="POST" action="{% url 'create' %}">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit"> Valider</button>
-</form>
+{% block page_title %}
+    Ajouter un Restaurant
+{% endblock %}
 
 
-
-</body>
-</html>
+{% block content %}
+    <form class="form-horizontal" method="POST" action="{% url 'create' %}">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit"> Valider</button>
+    </form>
+<a href="/">Accueil</a>
+{% endblock %}
